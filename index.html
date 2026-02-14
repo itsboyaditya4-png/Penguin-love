@@ -1,203 +1,142 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For My Love ❤️</title>
-
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    text-align:center;
-    background: linear-gradient(#ffd6e7,#fff);
-    overflow:hidden;
-}
-
-/* Container */
-.container{
-    margin-top:50px;
-    padding:20px;
-}
-
-/* Penguin animation */
-.penguin{
-    font-size:90px;
-    animation: float 2s infinite alternate;
-}
-
-@keyframes float{
-    from{transform:translateY(0);}
-    to{transform:translateY(-12px);}
-}
-
-/* Button */
-button{
-    padding:14px 26px;
-    font-size:18px;
-    background:#ff4d88;
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-button:hover{
-    background:#e6005c;
-}
-
-/* Letter box */
-.letter{
-    max-width:520px;
-    margin:25px auto;
-    padding:25px;
-    background:white;
-    border-radius:15px;
-    box-shadow:0 6px 25px rgba(0,0,0,0.2);
-    font-size:18px;
-    color:#333;
-    display:none;
-    line-height:1.6;
-}
-
-/* Falling hearts & kisses */
-.fall{
-    position:fixed;
-    top:-10px;
-    font-size:20px;
-    animation: fall linear infinite;
-}
-
-@keyframes fall{
-    to{
-        transform: translateY(100vh);
-        opacity:0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin Love - For Aditi ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #a8e6ff, #ffffff);
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }    .container {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px;
     }
-}
-</style>
-</head>
-<body>
 
-<!-- Background Music -->
+    h1 {
+        font-size: 2.5em;
+        color: #ff4d6d;
+    }
+
+    .note {
+        max-width: 700px;
+        margin: auto;
+        font-size: 1.2em;
+        line-height: 1.6;
+        background: rgba(255,255,255,0.85);
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    /* Penguin */
+    .penguin {
+        font-size: 80px;
+        margin-bottom: 10px;
+    }
+
+    /* Falling hearts and kisses */
+    .fall {
+        position: fixed;
+        top: -50px;
+        font-size: 24px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-50px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh);
+            opacity: 0.5;
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: #ff4d6d;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff1f4b;
+    }
+</style>
+
+</head>
+<body><!-- Background Music -->
 <audio id="bgMusic" loop>
     <source src="bg.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
+    <div class="penguin">🐧❤️🐧</div>
+    <h1>Happy Valentine’s Day Aditi</h1>
 
-    <div class="penguin">🐧💞🐧</div>
-    <h2>For My Cute Penguin</h2>
+    <div class="note">
+        Dear Aditi,
 
-    <button onclick="startLove()">Open Your Surprise</button>
+        Do you know why I chose penguins for you?
 
-    <div class="letter" id="letter">
-        My Love ❤️<br><br>
+        Because penguins don’t just love… they choose one partner and stay loyal through every storm, every winter, and every long journey.
 
-        Just like penguins stay loyal to one partner for life,  
-        I want you to know that you are my person, my comfort, and my happiness.  
+        And that’s exactly how I feel about you.
 
-        In my busy days, you are my peace.  
-        In my difficult moments, you are my strength.  
-        And in my happiest moments, you are the reason behind my smile.  
+        In this huge world, my heart chose you — not for a moment, not for a season, but for something that feels forever.
 
-        You make my world softer, warmer, and more beautiful every single day.  
+        Like two little penguins walking side by side on ice, even when life gets cold, I just want to keep walking with you… slowly, honestly, and always together.
 
-        I may not always say it perfectly, but I truly care for you, respect you, and feel lucky to have you in my life.  
+        You make my days warmer, my thoughts softer, and my world happier without even trying.
 
-        Sending you lots of love, hugs and kisses 😘💗  
+        If love were a place, it would be wherever you are.
+        If peace had a name, it would be you.
 
-        Forever your penguin 🐧❤️  
+        So this Valentine’s Day, I just want to say…
+
+        I’m yours — in the calm days, the crazy days, and every little moment in between.
+
+        Forever your penguin,
+        Adi ❤️
     </div>
 
+    <button onclick="playMusic()">Play Music 🎵</button>
 </div>
 
 <script>
-function startLove(){
-    document.getElementById("letter").style.display="block";
-    document.getElementById("bgMusic").play();
-    startFalling();
-}
+    // Play music on button click (browser autoplay restriction)
+    function playMusic() {
+        document.getElementById("bgMusic").play();
+    }
 
-/* Hearts and kisses animation */
-function startFalling(){
-    const symbols = ["❤️","💖","💗","😘","💞"];
-    setInterval(function(){
-        let item = document.createElement("div");
-        item.className = "fall";
-        item.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
-        item.style.left = Math.random()*100 + "vw";
-        item.style.fontSize = (16 + Math.random()*24) + "px";
-        item.style.animationDuration = (3 + Math.random()*3) + "s";
-        document.body.appendChild(item);
+    // Create falling hearts and kisses
+    const symbols = ["❤️","🥰","😘"];
+    function createFall() {
+        const fall = document.createElement("div");
+        fall.classList.add("fall");
+        fall.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        fall.style.left = Math.random() * 100 + "vw";
+        fall.style.animationDuration = (3 + Math.random() * 4) + "s";
+        document.body.appendChild(fall);
 
-        setTimeout(()=>{item.remove();},6000);
-    },300);
-}
+        setTimeout(() => {
+            fall.remove();
+        }, 7000);
+    }
+
+    setInterval(createFall, 300);
 </script>
 
 </body>
-</html>/* Falling Hearts */
-.heart {
-    position: fixed;
-    top: -10px;
-    color: #ff4d6d;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
-
-/* Penguin Background */
-.penguin {
-    position: fixed;
-    bottom: 10px;
-    width: 90px;
-    opacity: 0.8;
-}
-
-.p1 { left: 10%; }
-.p2 { right: 10%; }
-</style></head><body><!-- Background Music --><audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3caa1c3d36.mp3?filename=romantic-background-112191.mp3" type="audio/mp3">
-</audio><!-- Penguins --><img class="penguin p1" src="https://cdn-icons-png.flaticon.com/512/616/616546.png">
-<img class="penguin p2" src="https://cdn-icons-png.flaticon.com/512/616/616546.png"><!-- Letter --><div class="letter">
-    <h1>My Open Letter For You ❤️</h1>
-    <p>
-    Hey Love,<br><br>There are so many things I feel for you, and today I just wanted to put them into words.<br><br>
-
-You are not just someone special to me…  
-You are the reason my days feel brighter, my smiles feel real, and my life feels warmer.<br><br>
-
-Just like these little hearts falling endlessly, my love for you keeps growing every day — quietly, deeply, and truly.<br><br>
-
-And like the penguins who stay together no matter what,  
-I want you to know that I’m always with you — in your happiness, your tough days, and every little moment in between.<br><br>
-
-You are my peace, my comfort, and the most beautiful part of my life.<br><br>
-
-Happy Valentine’s Day, my love.<br><br>
-
-— Yours, Always ❤️
-</p>
-
-</div><!-- Hearts Script --><script>
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
-
-setInterval(createHeart, 300);
-</script></body>
 </html>
