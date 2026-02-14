@@ -1,40 +1,142 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>My Love Letter ❤️</title><style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    overflow: hidden;
-    text-align: center;
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background: linear-gradient(#ffd6e7,#fff);
+    overflow:hidden;
 }
 
-/* Letter Box */
-.letter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.95);
-    padding: 35px;
-    border-radius: 20px;
-    width: 80%;
-    max-width: 520px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+/* Container */
+.container{
+    margin-top:50px;
+    padding:20px;
 }
 
-h1 {
-    color: #ff4d6d;
+/* Penguin animation */
+.penguin{
+    font-size:90px;
+    animation: float 2s infinite alternate;
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #333;
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-12px);}
 }
 
-/* Falling Hearts */
+/* Button */
+button{
+    padding:14px 26px;
+    font-size:18px;
+    background:#ff4d88;
+    color:white;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:hover{
+    background:#e6005c;
+}
+
+/* Letter box */
+.letter{
+    max-width:520px;
+    margin:25px auto;
+    padding:25px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 6px 25px rgba(0,0,0,0.2);
+    font-size:18px;
+    color:#333;
+    display:none;
+    line-height:1.6;
+}
+
+/* Falling hearts & kisses */
+.fall{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(100vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="bg.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <div class="penguin">🐧💞🐧</div>
+    <h2>For My Cute Penguin</h2>
+
+    <button onclick="startLove()">Open Your Surprise</button>
+
+    <div class="letter" id="letter">
+        My Love ❤️<br><br>
+
+        Just like penguins stay loyal to one partner for life,  
+        I want you to know that you are my person, my comfort, and my happiness.  
+
+        In my busy days, you are my peace.  
+        In my difficult moments, you are my strength.  
+        And in my happiest moments, you are the reason behind my smile.  
+
+        You make my world softer, warmer, and more beautiful every single day.  
+
+        I may not always say it perfectly, but I truly care for you, respect you, and feel lucky to have you in my life.  
+
+        Sending you lots of love, hugs and kisses 😘💗  
+
+        Forever your penguin 🐧❤️  
+    </div>
+
+</div>
+
+<script>
+function startLove(){
+    document.getElementById("letter").style.display="block";
+    document.getElementById("bgMusic").play();
+    startFalling();
+}
+
+/* Hearts and kisses animation */
+function startFalling(){
+    const symbols = ["❤️","💖","💗","😘","💞"];
+    setInterval(function(){
+        let item = document.createElement("div");
+        item.className = "fall";
+        item.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+        item.style.left = Math.random()*100 + "vw";
+        item.style.fontSize = (16 + Math.random()*24) + "px";
+        item.style.animationDuration = (3 + Math.random()*3) + "s";
+        document.body.appendChild(item);
+
+        setTimeout(()=>{item.remove();},6000);
+    },300);
+}
+</script>
+
+</body>
+</html>/* Falling Hearts */
 .heart {
     position: fixed;
     top: -10px;
